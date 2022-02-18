@@ -1,5 +1,5 @@
 import {
 	app
-} from './v1.js'
+} from './version1'
 
 app()

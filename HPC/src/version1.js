@@ -6,8 +6,8 @@ let data = []
 let config = {
 	data: undefined,
 	canvas: undefined,
-	x: 'Age',
-	y: 'Overall',
+	x: 'Number Iterated',
+	y: 'Percentage Difference',
 	xScale: undefined,
 	yScale: undefined,
 	filter: undefined,
@@ -19,10 +19,11 @@ function showTooltip(evt, d) {
 	document.getElementById('tooltip').style.top = evt.pageY + 2 + 'px'
 	document.getElementById('tooltip').innerHTML = `
 		<div>
-			Name: ${d.Name}<br>
-			Age: ${d.Age}<br>
-			Overall: ${d.Overall}<br>
-			Potential: ${d.Potential}
+			Umask: ${d.umask}<br>
+			Pair: ${d.Pair}<br>
+			Part: ${d.Part}<br>
+			Average: ${d.Average}<br>
+			Difference: ${d.Diff}
 		</div>
 	`
 }
@@ -45,7 +46,7 @@ function drawAxis() {
 function render() {
 	data = config.data
 	if (config.filter) {
-		data = data.filter(d => d.Nationality === config.filter)
+		data = data.filter(d => d.Diff >= config.filter)
 	}
 
 	let circles = config.canvas
@@ -80,38 +81,38 @@ function render() {
 }
 
 function registerButtonEvents() {
-	document.getElementById('overall-button').onclick = function () {
-		config.y = 'Overall'
+	document.getElementById('diff-button').onclick = function () {
+		config.y = 'Diff'
 		render()
 	}
 
-	document.getElementById('potential-button').onclick = function () {
-		config.y = 'Potential'
+	document.getElementById('ID-button').onclick = function () {
+		config.y = 'Diff'
 		render()
 	}
 
-	document.getElementById('spain-button').onclick = function () {
-		config.filter = 'Spain'
+	document.getElementById('50-button').onclick = function () {
+		config.filter = 50
 		render()
 	}
 
-	document.getElementById('germany-button').onclick = function () {
-		config.filter = 'Germany'
+	document.getElementById('100-button').onclick = function () {
+		config.filter = 100
 		render()
 	}
 
-	document.getElementById('italy-button').onclick = function () {
-		config.filter = 'Italy'
+	document.getElementById('500-button').onclick = function () {
+		config.filter = 500
 		render()
 	}
 
-	document.getElementById('england-button').onclick = function () {
-		config.filter = 'England'
+	document.getElementById('1000-button').onclick = function () {
+		config.filter = 1000
 		render()
 	}
 
-	document.getElementById('portugal-button').onclick = function () {
-		config.filter = 'Portugal'
+	document.getElementById('hide0-button').onclick = function () {
+		config.filter = 1
 		render()
 	}
 
@@ -153,13 +154,13 @@ function prepareGroups() {
 
 async function loadData() {
 	return d3.csv('data.csv').then(d => {
-		data = d.slice(0, 1000)
+		data = d.slice(0, 65536)
 		config.data = data
 
-		config.xMin = d3.min(data, d => Number(d.Age))
-		config.xMax = d3.max(data, d => Number(d.Age))
-		config.yMin = d3.min(data, d => Number(d.Potential))
-		config.yMax = d3.max(data, d => Number(d.Potential))
+		config.xMin = d3.min(data, d => Number(d.Average))
+		config.xMax = d3.max(data, d => Number(d.Average))
+		config.yMin = d3.min(data, d => Number(d.Diff))
+		config.yMax = d3.max(data, d => Number(d.Diff))
 
 		console.log(data)
 	})
