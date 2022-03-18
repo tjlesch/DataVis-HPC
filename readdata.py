@@ -136,14 +136,14 @@ def main():
                         if(node_list[node.id + 65535].avg == 0 and node.avg == 0):
                                 node.diff = 0
                         elif(node_list[node.id + 65535].avg == 0 and node.avg != 0):
-                                node.diff = 1000
+                                node.diff = 1000000
                         else:
                                 node.diff = node.avg / node_list[node.id + 65535].avg * 100
                 else:
                         if(node.avg == 0 and node_list[node.id - 65537].avg == 0):
                                 node.diff = 0
                         elif(node.avg == 0 and node_list[node.id - 65537].avg != 0):
-                                node.diff = 1000
+                                node.diff = 1000000
                         else:   
                                 node.diff = node_list[node.id - 65537].avg / node.avg * 100
         header = ['ID', 'Event Sel', 'umask', 'Pair', 'Part', 'Run 1', 'Run 2', 'Run 3', 'Run 4', 'Run 5', 'Run 6', 'Run 7', 'Run 8', 'Run 9', 'Run 10', 'Average', 'Max', 'Min', 'Range', 'Diff']

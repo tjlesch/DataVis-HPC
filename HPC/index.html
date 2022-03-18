@@ -15,21 +15,62 @@
 		display:none
 		">
 	</div>
+	<!--
 	<div>
 		<div class=button id="diff-button">Difference</div>
 		<div class=button id="ID-button">ID</div>
 	</div>
+	-->
 
-	<svg style="width:600px; height:300px">
+	<svg style="width:800px; height:400px">
 
 	</svg>
 	<div>
-		<div class=button id="hide0-button">Hide 0s</div>
-		<div class=button id="50-button">Hide < 50%</div>
-		<div class=button id="100-button">Hide < 100%</div>
-		<div class=button id="500-button">Hide < 500%</div>
-		<div class=button id="1000-button">Hide < 1000%</div>
-		<div class=button id="filter-none-button">No Filter</div>
+		<div class=button id="show0-button">Show 0s</div>
+		<div class=button id="hide0-button">Hide 0s</div><br> 
+		<div class=button id="50-button">Hide Under 50%</div>
+		<div class=button id="100-button">Hide Under 100%</div>
+		<div class=button id="500-button">Hide Under 500%</div>
+		<div class=button id="1000-button">Hide Under 1000%</div>
+		<div class=button id="filter-none-button">No Less Than Filter</div><br> 
+		<label for="nValue" 
+         	style="display: inline-block; width: 240px; text-align: right">
+         	Custom Over Filter = <span id="custom-under-filter"></span>
+  		</label>
+  		<input type="number" min="0" max="10000000" step="50" value="0" id="Undervalue"><br> 
+		<div class=button id="50-over-button">Hide Over 50%</div>
+		<div class=button id="100-over-button">Hide Over 100%</div>
+		<div class=button id="500-over-button">Hide Over 500%</div>
+		<div class=button id="1000-over-button">Hide Over 1000%</div>
+		<div class=button id="filter-none-over-button">No Greater Than Filter</div><br> 
+		<label for="nValue" 
+         	style="display: inline-block; width: 240px; text-align: right">
+         	Custom Over Filter = <span id="custom-over-filter"></span>
+  		</label>
+  		<input type="number" min="0" max="10000000" step="50" value="0" id="Overvalue">
+	</div>
+
+	<div>
+		<div class=button id="5-a-button">Hide Under 5</div>
+		<div class=button id="10-a-button">Hide Under 10</div>
+		<div class=button id="50-a-button">Hide Under 50</div>
+		<div class=button id="100-a-button">Hide Under 100</div>
+		<div class=button id="filter-a-none-button">No Less Than Filter</div><br> 
+		<label for="nValue" 
+         	style="display: inline-block; width: 240px; text-align: right">
+         	Custom Over Filter = <span id="custom-under-a-filter"></span>
+  		</label>
+  		<input type="number" min="0" max="10000000" step="5" value="0" id="a-Undervalue"><br> 
+		<div class=button id="5-a-over-button">Hide Over 5</div>
+		<div class=button id="10-a-over-button">Hide Over 10</div>
+		<div class=button id="50-a-over-button">Hide Over 50</div>
+		<div class=button id="100-a-over-button">Hide Over 100</div>
+		<div class=button id="filter-a-none-over-button">No Greater Than Filter</div><br> 
+		<label for="nValue" 
+         	style="display: inline-block; width: 240px; text-align: right">
+         	Custom Over Filter = <span id="custom-a-over-filter"></span>
+  		</label>
+  		<input type="number" min="0" max="10000000" step="5" value="0" id="a-Overvalue">
 	</div>
 
 	<script src="dist/main.js"></script>
