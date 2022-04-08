@@ -1,0 +1,27 @@
+Inportant ToDo List
+Inifinity section
+Print List
+View of specific HPC
+Zoom In
+
+
+short bar
+list - 
+individual counter list
+07 21
+
+
+minor views on the side
+line chart per counter -->
+
+coloring simialar views specified - legend 
+
+highlighting 
+
+zoom in view *
+
+list of 
+chart of 
+
+communication reasons
+-Case study cache access -> by performance counter related to cache

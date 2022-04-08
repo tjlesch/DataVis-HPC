@@ -241,6 +241,40 @@ function registerButtonEvents() {
 		config.filter4 = +this.value
 		render()
 	  })
+	  
+	
+	  document.getElementById('Print-List').onclick = function () {
+		let list = document.getElementById("myList");
+		list.value = null;
+
+		data = config.data
+		if (config.filter) {
+			data = data.filter(d => d.Diff >= config.filter)
+		}
+
+		if(config.filter2) {
+			data = data.filter(d => d.Diff <= config.filter2)
+		}
+
+		if(config.filter3) {
+			data = data.filter(d => d.Abs >= config.filter3)
+		}
+
+		if(config.filter4) {
+			data = data.filter(d => d.Abs <= config.filter4)
+		}
+		data.forEach((d)=>{
+			let li = document.createElement("li");
+			li.innerText = `${d.es} ${d.umask}`;
+			list.appendChild(li);
+		  })
+		render()
+	  }  
+	  document.getElementById('Clear-List').onclick = function () {
+		let list = document.getElementById("myList").innerHTML = "";
+		
+		render()
+	  }
 }
 
 function createScales() {

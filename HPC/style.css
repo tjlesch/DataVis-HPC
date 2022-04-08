@@ -16,7 +16,7 @@ p {
 }
 
 .button {
-	height: 30px;
+	height: 20px;
 	background-color: aliceblue;
 	border: 1px solid black;
 	border-radius: 5px;
@@ -24,3 +24,7 @@ p {
 	padding: 5px;
 	cursor: pointer;
 }
+
+
+nav ul{height:200px;}
+nav ul{overflow:hidden; overflow-y:scroll;}
