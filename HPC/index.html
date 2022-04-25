@@ -30,8 +30,14 @@
 		
 	</svg>	
 	<svg style="width:800px; height:400px">
-	
+		<div id="test_block", style="position: absolute; left: 10px; top: 20px; width: 35px; height: 10px; background-color: #ffffff;
+		border: 2px solid #ffffff; font-size:12px; ">Infinity</div>
+		<div id="test_block", style="position: absolute; left: 100px; top: 5px; height: 10px; background-color: #ffffff;
+		border: 2px solid #ffffff; font-size:15px; ">Percentage Difference (Y) by Absolute Difference (X)</div>
+		<div id="test_block", style="position: absolute; left: 900px; top: 10px; height: 10px; width: 700px; background-color: #cae8ca;
+		font-size:15px; ">Specific HPC Results (Y) over Specific Run (X)</div>
 	</svg>
+
 	<div>
 		<div class=button id="show0-button">Show 0s</div>
 		<div class=button id="hide0-button">Hide 0s</div>
@@ -45,6 +51,7 @@
 		  Umask =  <span id="umask"></span>
 	   </label>
 	   <input type="text" value="0" id="umask-line" style="position: absolute; left: 1150px;">
+	   <div style="font-size: medium;">Percentage Difference Filters (Y axis)</div><br>
 		<div class=button id="50-button">Hide Under 50%</div>
 		<div class=button id="100-button">Hide Under 100%</div>
 		<div class=button id="500-button">Hide Under 500%</div>
@@ -69,6 +76,14 @@
 	</div>
 
 	<div>
+		<div style="font-size: medium;">Absolute Difference Filters (X axis)</div>
+		<div style="position: absolute; left: 900px">
+			<div class=button id="Print-List" style="left: 1000px">Print List</div>
+			<div class=button id="Clear-List" style="left: 1200px">Clear List</div>
+			<nav style="height: 300px; width: 200px; left: 1000px">
+				<ul id="myList"style="list-style-type:none; height: 300px; width: 100px; left: 1000px; overflow: scroll;"></ul>
+			</nav>
+		</div><br>
 		<div class=button id="5-a-button">Hide Under 5</div>
 		<div class=button id="10-a-button">Hide Under 10</div>
 		<div class=button id="50-a-button">Hide Under 50</div>
@@ -90,13 +105,7 @@
   		</label>
   		<input type="number" min="0" max="10000000" step="5" value="0" id="a-Overvalue">
 	</div>
-	<div>
-		<div class=button id="Print-List">Print List</div>
-		<div class=button id="Clear-List">Clear List</div>
-		<nav style="height: 300px; width: 200px; overflow: scroll;">
-			<ul id="myList"style="list-style-type:none;"></ul>
-		</nav>
-	</div>
+	
 	
 	<script src="dist/main.js"></script>
 </body>

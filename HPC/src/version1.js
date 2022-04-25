@@ -28,17 +28,30 @@ function showTooltip(evt, d) {
 	document.getElementById('tooltip').style.display = 'block'
 	document.getElementById('tooltip').style.left = evt.pageX + 2 + 'px'
 	document.getElementById('tooltip').style.top = evt.pageY + 2 + 'px'
-	document.getElementById('tooltip').innerHTML = `
-		<div>
-			Event Sel: ${d.es}<br>
-			Umask: ${d.umask}<br>
-			Pair: ${d.Pair}<br>
-			Part: ${d.Part}<br>
-			Average: ${d.Average}<br>
-			Difference: ${d.Diff}<br>
-			Absolute Difference ${d.Abs}
-		</div>
-	`
+	if(d.Diff == 10000000)
+		document.getElementById('tooltip').innerHTML = `
+			<div>
+				Event Sel: ${d.es}<br>
+				Umask: ${d.umask}<br>
+				Pair: ${d.Pair}<br>
+				Part: ${d.Part}<br>
+				Average: ${d.Average}<br>
+				Difference: Infinity <br>
+				Absolute Difference ${d.Abs}
+			</div>
+			`
+	else
+		document.getElementById('tooltip').innerHTML = `
+			<div>
+				Event Sel: ${d.es}<br>
+				Umask: ${d.umask}<br>
+				Pair: ${d.Pair}<br>
+				Part: ${d.Part}<br>
+				Average: ${d.Average}<br>
+				Difference: ${d.Diff}<br>
+				Absolute Difference ${d.Abs}
+			</div>
+		`
 }
 
 function hideTooltip() {
@@ -485,7 +498,7 @@ async function loadData() {
 }
 
 function registerDraggingEvents() {
-	d3.select('svg').on('mousedown', function (evt) {
+	/*d3.select('svg').on('mousedown', function (evt) {
 		config.dragging = true
 		config.draggingStartX = evt.pageX
 		config.draggingStartY = evt.pageY
@@ -519,7 +532,7 @@ function registerDraggingEvents() {
 			drawAxis()
 			render()
 		}
-	});
+	});*/
 
 	d3.select('svg').on('mouseup', function () {
 		config.dragging = false
