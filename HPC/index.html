@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 <html>
 
+	<style>
+		.dropbtn {
+		  background-color: #04AA6D;
+		  color: white;
+		  padding: 16px;
+		  font-size: 16px;
+		  border: none;
+		}
+		
+		.dropdown {
+		  position: relative;
+		  display: inline-block;
+		}
+		
+		.dropdown-content {
+		  display: none;
+		  position: absolute;
+		  background-color: #f1f1f1;
+		  min-width: 160px;
+		  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		  z-index: 1;
+		}
+		
+		.dropdown-content a {
+		  color: black;
+		  padding: 12px 16px;
+		  text-decoration: none;
+		  display: block;
+		}
+		
+		.dropdown-content a:hover {background-color: #ddd;}
+		
+		.dropdown:hover .dropdown-content {display: block;}
+		
+		.dropdown:hover .dropbtn {background-color: #3e8e41;}
+	</style>
+
+
 <head>
 	<link rel="stylesheet" href="style.css">
 
@@ -22,23 +60,95 @@
 		<div class=button id="ID-button">ID</div>
 	</div>
 	-->
-	<div style="width:100%; background-color: aqua;"></div>
-	<svg style="width:800px; height:400px; position: absolute;">
+	<div style="background-color: aqua; width: 1700px; height: 520px;">
+	<div style="width:100%; background-color: aqua; height: 50px;font-size: 40px">Using HPCs to Detect Side Channels </div>
+	<div style="width:100%; background-color: rgb(0, 64, 255); height: 20px;font-size: 40px"></div>
+	<svg style="width:800px; height:400px; position: absolute; top: 100px; background-color: #bdffff; left: 20px">
 	
 	</svg>
-	<svg id="line-graph" style="position: absolute; left: 850px; width:800px; height: 400px; background-color: #cae8ca;
-	border: 2px solid #4CAF50;">
+	<svg id="line-graph" style="position: absolute; left: 850px; top:100px; width:800px; height: 400px; background-color: #cae8ca;
+	">
 		
 	</svg>	
-	<svg style="width:800px; height:400px">
-		<div id="test_block", style="position: absolute; left: 10px; top: 20px; width: 35px; height: 10px; background-color: #ffffff;
-		border: 2px solid #ffffff; font-size:12px; ">Infinity</div>
-		<div id="test_block", style="position: absolute; left: 100px; top: 5px; height: 10px; background-color: #ffffff;
-		border: 2px solid #ffffff; font-size:15px; ">Percentage Difference (Y) by Absolute Difference (X)</div>
-		<div id="test_block", style="position: absolute; left: 900px; top: 10px; height: 10px; width: 700px; background-color: #cae8ca;
-		font-size:15px; ">Specific HPC Results (Y) over Specific Run (X)</div>
+	<svg style="width:800px; height:400px; top: 200px">
+		<div id="test_block", style="position: absolute; z-index: 1; left: 31px; top: 112px; width: 35px; height: 10px; 
+		background-color: #bdffff; border: 2px solid #bdffff; font-size:12px">Infinity</div>
+		<div id="test_block", style="position: absolute; left: 120px; top: 80px; height: 20px; background-color: #bdffff;
+		border: 2px solid #bdffff; font-size:25px; z-index: 1;">Percentage Difference (Y) by Absolute Difference (X)</div>
+		<div id="test_block", style="position: absolute; left: 900px; top: 80px; height: 20px; width: 700px; background-color: #cae8ca;
+		font-size:25px; z-index: 1;">Specific HPC Results (Y) over Specific Run (X)</div>
 	</svg>
+	</div>
+	<div>
+		<div class="dropdown">
+			<button class="dropbtn">Filter Less Than (Y axis)</button>
+			<div class="dropdown-content">
+			  <a  id="filter-none-button">No Less Than Filter</a>
+			  <a  id="50-button">Hide Under 50%</a>
+			  <a  id="100-button">Hide Under 100%</a>
+			  <a  id="500-button">Hide Under 500%</a>
+			  <a  id="1000-button">Hide Under 1000%</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">Filter Greater Than (Y axis)</button>
+			<div class="dropdown-content">
+			  <a  id="filter-none-over-button">No Less Than Filter</a>
+			  <a  id="50-over-button">Hide Over 50%</a>
+			  <a  id="100-over-button">Hide Over 100%</a>
+			  <a  id="500-over-button">Hide Over 500%</a>
+			  <a  id="1000-over-button">Hide Over 1000%</a>
+			  <a  id="infinity-button">Hide Infinities</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">Filter Less Than (X axis)</button>
+			<div class="dropdown-content">
+			  <a  id="filter-a-none-button">No Less Than Filter</a>
+			  <a  id="5-a-button">Hide Under 5</a>
+			  <a  id="10-a-button">Hide Under 10</a>
+			  <a  id="50-a-button">Hide Under 50</a>
+			  <a  id="100-a-button">Hide Under 100</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">Filter Greater Than (X axis)</button>
+			<div class="dropdown-content">
+			  <a  id="filter-a-none-over-button">No Greater Than Filter</a>
+			  <a  id="5-a-over-button">Hide Over 5</a>
+			  <a  id="10-a-over-button">Hide Over 10</a>
+			  <a  id="50-a-over-button">Hide Over 50</a>
+			  <a  id="100-a-over-button">Hide Over 100</a>
+			</div>
+		</div>
 
+		</br>
+	</br>
+		<label for="nValue" 
+         	style="display: inline-block; width: 100px; text-align: right">
+         	Custom Less Than Filter <span id="custom-under-filter"></span>
+  		</label>
+  		<input type="number" min="0" max="10000000" step="50" value="0" id="Undervalue" style="width: 75px;">
+
+		  <label for="nValue" 
+		  style="display: inline-block; width: 120px; text-align: right">
+		  Custom Greater Than Filter <span id="custom-over-filter"></span>
+	   </label>
+	   <input type="number" min="0" max="10000000" step="50" value="0" id="Overvalue" style="width: 75px;">
+
+	   <label for="nValue" 
+	   style="display: inline-block; width: 100px; text-align: right">
+	   Custom Less Than Filter <span id="custom-under-a-filter"></span>
+	</label>
+	<input type="number" min="0" max="10000000" step="5" value="0" id="a-Undervalue" style="width: 75px;">
+
+	   <label for="nValue" 
+         	style="display: inline-block; width: 120px; text-align: right">
+         	Custom Greater Than Filter <span id="custom-a-over-filter"></span>
+  		</label>
+  		<input type="number" min="0" max="10000000" step="5" value="0" id="a-Overvalue" style="width: 75px;">
+	</div>
+	<!--
 	<div>
 		<div class=button id="show0-button">Show 0s</div>
 		<div class=button id="hide0-button">Hide 0s</div>
@@ -58,6 +168,8 @@
 		<div class=button id="500-button">Hide Under 500%</div>
 		<div class=button id="1000-button">Hide Under 1000%</div>
 		<div class=button id="filter-none-button">No Less Than Filter</div><br> 
+
+		<div class=button id="remove-graph">graph</div><br> 
 		<div class=button id="make-line-graph" style="position: absolute; left: 900px; width: 100px">Make Graph</div>
 		<label for="nValue" 
          	style="display: inline-block; width: 240px; text-align: right">
@@ -106,8 +218,27 @@
   		</label>
   		<input type="number" min="0" max="10000000" step="5" value="0" id="a-Overvalue">
 	</div>
-	
-	
+-->
+<label for="event-sel" 
+         	style="position: absolute; left: 900px; display: inline-block; width: 240px; text-align: right">
+         	Event Selection =  <span id="event-sel"></span>
+  		</label>
+  		<input type="text" value="0" id="event-sel-line" style="position: absolute; left: 1150px;"><br> 
+		  <label for="umask" 
+		  style="position: absolute; left: 900px; display: inline-block; width: 240px; text-align: right">
+		  Umask =  <span id="umask"></span>
+	   </label>
+	   <input type="text" value="0" id="umask-line" style="position: absolute; left: 1150px;">
+<div class=button id="make-line-graph" style="position: absolute; left: 900px; width: 100px">Make Graph</div>
+<div class=button id="remove-graph">graph</div>
+		
+<div style="position: absolute; left: 900px">
+	<div class=button id="Print-List" style="left: 1000px">Print List</div>
+	<div class=button id="Clear-List" style="left: 1200px">Clear List</div>
+	<nav style="height: 300px; width: 200px; left: 1000px">
+		<ul id="myList"style="list-style-type:none; height: 300px; width: 100px; left: 1000px; overflow: scroll;"></ul>
+	</nav>
+</div><br>
 	<script src="dist/main.js"></script>
 </body>
 

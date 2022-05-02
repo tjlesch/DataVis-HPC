@@ -1,0 +1,142 @@
+function gatherdata(){
+	let temp = []
+	let temp2 = []
+	console.log( data_line.length)
+	for(let i = 0; i < data_line.length; i++){
+		let tuple1 = [1, parseInt(data_line[i].Run1)]
+		temp.push(tuple1)
+		let tuple2 = [2, parseInt(data_line[i].Run2)]
+		temp.push(tuple2)
+		let tuple3 = [3, parseInt(data_line[i].Run3)]
+		temp.push(tuple3)
+		let tuple4 = [4, parseInt(data_line[i].Run4)]
+		temp.push(tuple4)
+		let tuple5 = [5, parseInt(data_line[i].Run5)]
+		temp.push(tuple5)
+		let tuple6 = [6, parseInt(data_line[i].Run6)]
+		temp.push(tuple6)
+		let tuple7 = [7, parseInt(data_line[i].Run7)]
+		temp.push(tuple7)
+		let tuple8 = [8, parseInt(data_line[i].Run8)]
+		temp.push(tuple8)
+		let tuple9 = [9, parseInt(data_line[i].Run9)]
+		temp.push(tuple9)
+		let tuple10 = [10, parseInt(data_line[i].Run10)]
+		temp.push(tuple10)
+		lines.push(temp)
+		console.log(temp)
+		console.log(lines)
+	}
+
+	temp2.push(parseInt(data_line[0].Run1))
+	temp2.push(parseInt(data_line[0].Run2))
+	temp2.push(parseInt(data_line[0].Run3))
+	temp2.push(parseInt(data_line[0].Run4))
+	temp2.push(parseInt(data_line[0].Run5))
+	temp2.push(parseInt(data_line[0].Run6))
+	temp2.push(parseInt(data_line[0].Run7))
+	temp2.push(parseInt(data_line[0].Run8))
+	temp2.push(parseInt(data_line[0].Run9))
+	temp2.push(parseInt(data_line[0].Run10))
+	console.log(temp)
+	//temp.append([])
+	//lines.append
+	lines = temp
+}
+
+function getMax(arr2)
+{
+	let max = 0
+	let max_val = 0
+	for(let j = 0; j< arr2.length;j++){
+		let arr = arr2[j]
+		console.log(arr)
+		for (let i = 0; i < arr.length; i++) {
+			if(arr[i][1] > max_val)
+			{
+				max_val = arr[i][1]
+				max = i
+			}
+		}
+	}
+	return max_val
+}
+
+function makeGraph(){
+	
+	var margin = {top: 5, right: 30, bottom: 30, left: 60},
+    width = 800 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+/*var svg = d3.select("#line-graph")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+  // Now I can use this dataset:
+	var xScale = d3.scaleLinear().domain([0, 10]).range([0, width]),
+        yScale = d3.scaleLinear().domain([0, d3.max(lines)]).range([height, 0]);*/
+		
+
+		//var svg.select("#line-graph").remove();
+		
+		
+		var svg = d3.select("#line-graph")
+		.append("svg")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+		.attr("id", "#graph")
+		.append("g")
+		.attr("transform",
+			"translate(" + margin.left + "," + margin.top + ")");
+		var xScale = d3.scaleLinear().domain([0, 10]).range([0, width]),
+            yScale = d3.scaleLinear().domain([0, getMax(lines)]).range([height, 0]);
+			console.log(getMax(lines))
+		
+		
+		svg.append("g")
+		.attr("transform", "translate(0," + height + ")")
+		.attr("id", "#graph")
+		.call(d3.axisBottom(xScale));
+	   
+	    svg.append("g")
+		.attr("id", "#graph")
+		.call(d3.axisLeft(yScale));
+		console.log("here")
+		console.log(lines)
+		console.log(lines.slice(0,10))
+		console.log(lines.slice(10,20))
+		for(let i = 0; i < lines.length; i= i+10){
+			svg.append('g')
+			.attr("id", "#graph")
+			.selectAll("dot")
+			.data(lines.slice(i,i+10))
+			.enter()
+			.append("circle")
+			.attr("cx", function (d) { return xScale(d[0]); } )
+			.attr("cy", function (d) { return yScale(d[1]); } )
+			.attr("r", 2)
+			.attr("transform", "translate(" + 0 + "," + 20 + ")")
+			.style("fill", "#CC0000");
+
+			var line = d3.line()
+			.x(function(d) { return xScale(d[0]); }) 
+			.y(function(d) { return yScale(d[1]); }) 
+			.curve(d3.curveMonotoneX)
+			
+			svg.append("path")
+			.attr("id", "#graph")
+			.datum(lines.slice(i,i+10)) 
+			.attr("class", "line") 
+			.attr("transform", "translate(" + 0 + "," + 20 + ")")
+			.attr("d", line)
+			.style("fill", "none")
+			.style("stroke", "#CC0000")
+			.style("stroke-width", "2");
+		}
+   
+}

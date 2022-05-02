@@ -155,7 +155,7 @@ function registerButtonEvents() {
 		render()
 	}
 
-	document.getElementById('show0-button').onclick = function () {
+	/*document.getElementById('show0-button').onclick = function () {
 		config.filter = undefined
 		render()
 	}
@@ -163,7 +163,7 @@ function registerButtonEvents() {
 	document.getElementById('hide0-button').onclick = function () {
 		config.filter = 1
 		render()
-	}
+	}*/
 
 	document.getElementById('filter-none-button').onclick = function () {
 		config.filter = 1
@@ -192,6 +192,11 @@ function registerButtonEvents() {
 
 	document.getElementById('1000-over-button').onclick = function () {
 		config.filter2 = 1000
+		render()
+	}
+
+	document.getElementById('infinity-button').onclick = function () {
+		config.filter2 = 10000000-1
 		render()
 	}
 	
@@ -261,6 +266,14 @@ function registerButtonEvents() {
 		config.filter4 = undefined
 		render()
 	}
+
+	document.getElementById('remove-graph').onclick = function () {
+		d3.selectAll("#line-graphX").remove();
+		console.log("graph")
+
+		render()
+	}
+
 	d3.select("#a-Overvalue").on("input", function() {
 		config.filter4 = +this.value
 		console.log(config.filter4)
@@ -395,7 +408,6 @@ function makeGraph(){
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
-
   // Now I can use this dataset:
 	var xScale = d3.scaleLinear().domain([0, 10]).range([0, width]),
         yScale = d3.scaleLinear().domain([0, d3.max(lines)]).range([height, 0]);*/
@@ -485,7 +497,7 @@ function prepareGroups() {
 
 async function loadData() {
 	return d3.csv('data.csv').then(d => {
-		data = d.slice(0, 3000)
+		data = d.slice(0, 100000)
 		config.data = data
 
 		config.xMin = d3.min(data, d => Number(d.Average))
