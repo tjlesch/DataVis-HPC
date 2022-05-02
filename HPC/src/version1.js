@@ -98,7 +98,10 @@ function render() {
 		.enter()
 		.append('circle')
 		.attr('r', 5)
-		.attr('fill', 'red')
+		.attr('fill', function(d){if(d.Part == "Reader 2")
+			 return 'red';
+			 else
+			 return 'green'; })
 		.attr('cx', d => config.xScale(Number(d[config.x])))
 		.attr('cy', 350)
 		.on('mouseover', showTooltip)
@@ -212,22 +215,22 @@ function registerButtonEvents() {
 
 
 	  document.getElementById('5-a-button').onclick = function () {
-		config.filter3 = 5
-		render()
-	}
-
-	document.getElementById('10-a-button').onclick = function () {
-		config.filter3 = 10
-		render()
-	}
-
-	document.getElementById('50-a-button').onclick = function () {
 		config.filter3 = 50
 		render()
 	}
 
+	document.getElementById('10-a-button').onclick = function () {
+		config.filter3 = 200
+		render()
+	}
+
+	document.getElementById('50-a-button').onclick = function () {
+		config.filter3 = 500
+		render()
+	}
+
 	document.getElementById('100-a-button').onclick = function () {
-		config.filter3 = 100
+		config.filter3 = 1000
 		render()
 	}
 
@@ -242,23 +245,23 @@ function registerButtonEvents() {
 	  })
 
 	document.getElementById('5-a-over-button').onclick = function () {
-		config.filter4 = 5
+		config.filter4 = 50
 		render()
 	}
 
 	document.getElementById('10-a-over-button').onclick = function () {
-		config.filter4 = 10
+		config.filter4 = 200
 		console.log("Hello World")
 		render()
 	}
 
 	document.getElementById('50-a-over-button').onclick = function () {
-		config.filter4 = 50
+		config.filter4 = 500
 		render()
 	}
 
 	document.getElementById('100-a-over-button').onclick = function () {
-		config.filter4 = 100
+		config.filter4 = 1000
 		render()
 	}
 	
@@ -267,12 +270,12 @@ function registerButtonEvents() {
 		render()
 	}
 
-	document.getElementById('remove-graph').onclick = function () {
+	/*document.getElementById('remove-graph').onclick = function () {
 		d3.selectAll("#line-graphX").remove();
 		console.log("graph")
 
 		render()
-	}
+	}*/
 
 	d3.select("#a-Overvalue").on("input", function() {
 		config.filter4 = +this.value
